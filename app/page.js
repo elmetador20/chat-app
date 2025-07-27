@@ -1,103 +1,120 @@
+// "use client"
+
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+   <main>
+    <div className="bg-black">
+     <section className="relative bg-gradient-to-br from-blue-600 to-purple-700 text-white py-20 md:py-32 overflow-hidden shadow-xl rounded-b-3xl">
+        {/* Background shapes for fancy effect */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500 opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-pink-500 opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-lg">
+            Connect Instantly. Chat Freely.
+          </h1>
+          <p className="text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-90">
+            weTalk is your go-to app for seamless conversations, vibrant communities, and crystal-clear communication.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <Link href="/chat" className="bg-white text-blue-700 px-8 py-4 rounded-full text-lg font-semibold shadow-xl hover:bg-blue-100 transition duration-300 ease-in-out transform hover:scale-105">
+              Start Chatting Now
+            </Link>
+            <Link href="/learn-more" className="text-white border-2 border-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-blue-700 transition duration-300 ease-in-out transform hover:scale-105">
+              Learn More
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 md:py-24 bg-white rounded-xl shadow-lg mx-4 mt-8">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-800">Why Choose weTalk?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {/* Feature 1 */}
+            <div className="bg-gray-300 p-8 rounded-xl shadow-md transform hover:scale-105 transition duration-300 ease-in-out">
+              <div className="text-blue-600 text-5xl mb-4">💬</div> {/* Emoji icon for chat */}
+              <h3 className="text-xl   text-blue-400 font-semibold mb-3">Real-time Messaging</h3>
+              <p className="text-gray-600">Experience lightning-fast message delivery and instant updates.</p>
+            </div>
+            {/* Feature 2 */}
+            <div className="bg-gray-300 p-8 rounded-xl shadow-md transform hover:scale-105 transition duration-300 ease-in-out">
+              <div className="text-purple-600 text-5xl mb-4">🔒</div> {/* Emoji icon for security */}
+              <h3 className="text-xl  text-blue-400 font-semibold mb-3">Secure & Private</h3>
+              <p className="text-gray-600">Your conversations are encrypted and always kept private.</p>
+            </div>
+            {/* Feature 3 */}
+            <div className="bg-gray-300 p-8 rounded-xl shadow-md transform hover:scale-105 transition duration-300 ease-in-out">
+              <div className="text-green-600 text-5xl mb-4">🌍</div> {/* Emoji icon for global */}
+              <h3 className="text-xl text-blue-400 font-semibold mb-3">Global Connectivity</h3>
+              <p className="text-gray-600">Connect with friends and family, no matter where they are.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section (Optional) */}
+      <section className="py-16 bg-blue-700 text-white text-center rounded-xl shadow-lg mx-4 mt-8">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Talking?</h2>
+          <p className="text-lg mb-8 opacity-90">Join thousands of users who love weTalk for its simplicity and power.</p>
+          <Link href="/signup" className="bg-white text-blue-700 px-10 py-4 rounded-full text-xl font-semibold shadow-xl hover:bg-blue-100 transition duration-300 ease-in-out transform hover:scale-105">
+            Sign Up Free
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-5 mt-8 rounded-t-xl">
+        <div className="container mx-auto px-6 text-center">
+          <p>&copy; {new Date().getFullYear()} weTalk. All rights reserved.</p>
+          <div className="flex justify-center space-x-6 mt-4">
+            <Link href="/privacy" className="text-gray-400 hover:text-white transition duration-300">Privacy Policy</Link>
+            <Link href="/terms" className="text-gray-400 hover:text-white transition duration-300">Terms of Service</Link>
+          </div>
+        </div>
       </footer>
-    </div>
+
+      {/* Keyframe animations for the blob effect */}
+      {/* <style jsx>{`
+        @keyframes blob {
+          0% {
+            transform: translate(0px, 0px) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+          100% {
+            transform: translate(0px, 0px) scale(1);
+          }
+        }
+        .animate-blob {
+          animation: blob 7s infinite cubic-bezier(0.6, 0.01, 0.4, 1);
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
+     */}
+     </div>
+   </main>
   );
 }
+ export const metadata = {
+  title:"Home-WeTalk",
+
+
+  description:"This is place where you can chat"
+
+ }
