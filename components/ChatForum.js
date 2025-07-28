@@ -1,24 +1,35 @@
-"use client"
-import React from 'react'
-import { useState, useEffect } from 'react';
-import  { User, Channel as StreamChannel } from 'stream-chat';
-import { useCreateChatClient, Chat, Channel, ChannelHeader, MessageInput, MessageList, Thread, Window } from 'stream-chat-react';
+"use client";
+import React, { useState, useEffect } from "react";
+import {
+  useCreateChatClient,
+  Chat,
+  Channel,
+  ChannelHeader,
+  MessageInput,
+  MessageList,
+  Thread,
+  Window,
+} from "stream-chat-react";
 
-
-function capitalize(str){
-  return str.charAt(0).toUpperCase()+str.slice(1);
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
-const ChatForum = ({clerkUser ,slug}) => {
+
+const ChatForum = ({ clerkUser, slug }) => {
   const apiKey = process.env.NEXT_PUBLIC_USER_KEY;
-const userId = clerkUser.id;
-const userName = clerkUser.name;
-const userToken = clerkUser.token
-const user = {
-  id: userId,
-  name: userName,
-  image: `https://getstream.io/random_png/?name=${userName}`,
-};
-    const [channel, setChannel] = useState();
+
+  const userId = clerkUser.id;
+  const userName = clerkUser.name;
+  const userToken = clerkUser.token;
+
+  const user = {
+    id: userId,
+    name: userName,
+    image: `https://getstream.io/random_png/?name=${userName}`,
+  };
+
+  const [channel, setChannel] = useState(null);
+
   const client = useCreateChatClient({
     apiKey,
     tokenOrProvider: userToken,
@@ -26,19 +37,24 @@ const user = {
   });
 
   useEffect(() => {
-    if (!client) return;
+    if (!client || !userId || !slug) return;
 
-    const channel = client.channel('messaging', slug, {
-      image: 'https://getstream.io/random_png/?name=react',
-      name: capitalize(slug)+"discussion",
-      members: [userId],
-    });
+    const setupChannel = async () => {
+      const newChannel = client.channel("messaging", slug, {
+        image: "https://getstream.io/random_png/?name=react",
+        name: `${capitalize(slug)} Discussion`,
+        members: [userId],
+      });
 
-    setChannel(channel);
-    channel.addMembers([userId])
-  }, [client]);
+      await newChannel.watch();
+      await newChannel.addMembers([userId]);
+      setChannel(newChannel);
+    };
 
-  if (!client) return <div>Setting up client & connection...</div>;
+    setupChannel();
+  }, [client, slug, userId]);
+
+  if (!client || !channel) return <div>Setting up chat...</div>;
 
   return (
     <Chat client={client}>
@@ -54,6 +70,4 @@ const user = {
   );
 };
 
-
-
-export default ChatForum
+export default ChatForum;
