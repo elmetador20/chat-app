@@ -1,7 +1,7 @@
 import { StreamChat } from "stream-chat";
 import { clerkClient } from "@clerk/nextjs/server";
 
-const api_key = process.env.API_KEY;
+const api_key = process.env.NEXT_PUBLIC_USER_KEYY;
 const api_secret = process.env.API_SECRET;
 
 export async function POST(request) {

@@ -9,7 +9,7 @@ function capitalize(str){
   return str.charAt(0).toUpperCase()+str.slice(1);
 }
 const ChatForum = ({clerkUser ,slug}) => {
-  const apiKey = process.env.USER_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_USER_KEY;
 const userId = clerkUser.id;
 const userName = clerkUser.name;
 const userToken = clerkUser.token
